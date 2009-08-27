@@ -1,3 +1,7 @@
+require 'rubygems'
+require 'wirble'
+require 'pp'
+
 # print SQL to STDOUT
 if ENV.include?('RAILS_ENV') && !Object.const_defined?('RAILS_DEFAULT_LOGGER')
   require 'logger'
@@ -21,3 +25,7 @@ class Object
     (methods - Object.instance_methods).sort
   end
 end
+
+# start wirble (with color)
+Wirble.init
+Wirble.colorize
