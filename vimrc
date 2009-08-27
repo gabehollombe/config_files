@@ -12,6 +12,14 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
+set cursorline " highlight current line
+set hidden " allow unsaved buffers
+
+" smart indent options
+set cindent
+set smartindent
+set autoindent
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -174,3 +182,20 @@ set smartcase
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
+" Gabe: set gui font
+set guifont=Anonymous\ Pro\ 12
+
+let g:browser = 'firefox -new-tab '     
+" Open the Ruby ApiDock page for the word under cursor, in a new Firefox tab
+function! OpenRubyDoc(keyword)
+  let url = 'http://apidock.com/ruby/'.a:keyword
+  exec '!'.g:browser.' '.url.' &'
+endfunction           
+noremap RB :call OpenRubyDoc(expand('<cword>'))<CR>
+ 
+" Open the Rails ApiDock page for the word under cursos, in a new Firefox tab
+function! OpenRailsDoc(keyword)
+  let url = 'http://apidock.com/rails/'.a:keyword
+  exec '!'.g:browser.' '.url.' &'
+endfunction
+noremap RR :call OpenRailsDoc(expand('<cword>'))<CR>
