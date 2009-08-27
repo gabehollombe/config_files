@@ -6,10 +6,12 @@
 	diff = auto
 	status = auto
 	branch = auto
+	ui = auto
 [core]
 	excludesfile = ~/.gitignore
 [alias]
   c = commit -m
+	ci = commit
   a = add
   di = diff
   dic = diff --cached
@@ -17,4 +19,13 @@
   ps = push
   plre = pull --rebase
   st = status
+	co = checkout
   out = log origin..HEAD
+	br = branch
+  lg = log -p
+
+[branch]
+	autosetupmerge = true
+
+[push]
+	default = current
