@@ -182,10 +182,10 @@ set smartcase
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
-" Gabe: set gui font
-set guifont=Anonymous\ Pro\ 12
+" Set gui font
+set guifont=Anonymous\ Pro:h14
 
-let g:browser = 'firefox -new-tab '     
+let g:browser = ' open /Applications/Safari.app '     
 " Open the Ruby ApiDock page for the word under cursor, in a new Firefox tab
 function! OpenRubyDoc(keyword)
   let url = 'http://apidock.com/ruby/'.a:keyword
