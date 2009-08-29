@@ -185,17 +185,17 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Set gui font
 set guifont=Anonymous\ Pro:h14
 
-let g:browser = ' open /Applications/Safari.app '     
+let g:browser = 'open'     
 " Open the Ruby ApiDock page for the word under cursor, in a new Firefox tab
 function! OpenRubyDoc(keyword)
   let url = 'http://apidock.com/ruby/'.a:keyword
-  exec '!'.g:browser.' '.url.' &'
+  exec '!'.g:browser.' '.url.''
 endfunction           
 noremap RB :call OpenRubyDoc(expand('<cword>'))<CR>
  
 " Open the Rails ApiDock page for the word under cursos, in a new Firefox tab
 function! OpenRailsDoc(keyword)
   let url = 'http://apidock.com/rails/'.a:keyword
-  exec '!'.g:browser.' '.url.' &'
+  exec '!'.g:browser.' '.url.''
 endfunction
 noremap RR :call OpenRailsDoc(expand('<cword>'))<CR>
