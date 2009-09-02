@@ -1,5 +1,5 @@
 " Font
-set guifont=Anonymous\ Pro:h14
+set guifont=Anonymous\ Pro\ 12
 
 " No audible bell
 set vb
