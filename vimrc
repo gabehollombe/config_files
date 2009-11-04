@@ -200,3 +200,10 @@ function! OpenRailsDoc(keyword)
 endfunction
 noremap RR :call OpenRailsDoc(expand('<cword>'))<CR>
 
+" FuzzyFinder keybinds
+map <leader>t :FufFile **/<CR>
+map <leader>b :FufBuffer<CR>
+
+" Make Control+V do a system clipboard paste in normal and insert modes
+nmap <C-V> "+gP
+imap <C-V> <ESC><C-V>i
