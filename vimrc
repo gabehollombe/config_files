@@ -94,11 +94,11 @@ map <Leader>c :Rcontroller
 map <Leader>v :Rview 
 map <Leader>u :Runittest 
 map <Leader>f :Rfunctionaltest 
-map <Leader>tm :RTmodel 
-map <Leader>tc :RTcontroller 
-map <Leader>tv :RTview 
-map <Leader>tu :RTunittest 
-map <Leader>tf :RTfunctionaltest 
+" map <Leader>tm :RTmodel 
+" map <Leader>tc :RTcontroller 
+" map <Leader>tv :RTview 
+" map <Leader>tu :RTunittest 
+" map <Leader>tf :RTfunctionaltest 
 map <Leader>sm :RSmodel 
 map <Leader>sc :RScontroller 
 map <Leader>sv :RSview 
@@ -114,7 +114,7 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+" map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
@@ -205,5 +205,9 @@ map <leader>t :FufFile **/<CR>
 map <leader>b :FufBuffer<CR>
 
 " Make Control+V do a system clipboard paste in normal and insert modes
-nmap <C-V> "+gP
-imap <C-V> <ESC><C-V>i
+" nmap <C-V> "+gP
+" imap <C-V> <ESC><C-V>i
+
+" Nerd Tree shortcut
+map <leader>n :NERDTreeToggle<CR>
+
