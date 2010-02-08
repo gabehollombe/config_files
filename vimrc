@@ -16,7 +16,7 @@ set cursorline " highlight current line
 set hidden " allow unsaved buffers
 
 " smart indent options
-set cindent
+" set cindent
 set smartindent
 set autoindent
 
@@ -120,8 +120,8 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
-" Maps autocomplete to tab
-imap <Tab> <C-N>
+" Maps autocomplete to Control+Space
+imap <C-Space> <C-N>
 
 " Duplicate a selection
 " Visual mode: D
