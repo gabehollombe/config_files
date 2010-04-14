@@ -120,8 +120,9 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
-" Maps autocomplete to Tab key
+" Maps autocomplete
 imap <Tab> <C-N>
+"imap <C-Space> <C-N>
 
 " Duplicate a selection
 " Visual mode: D
