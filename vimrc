@@ -1,3 +1,6 @@
+" Load Pathogen bundles
+call pathogen#runtime_append_all_bundles()
+
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
