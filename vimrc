@@ -217,3 +217,13 @@ map <leader>n :NERDTreeToggle<CR>
 
 " Make jj take us out of insert mode
 imap jj <esc>
+
+if (has("gui_running"))
+  " Make fullscreen mode window size take up the full screen
+  set fuoptions=maxvert,maxhorz
+  "
+  " Remove the vim toolbar from Win/GTK versions
+  set guioptions-=T
+endif
+
+
