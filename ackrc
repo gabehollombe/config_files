@@ -1,3 +1,4 @@
 --ignore-dir=rails
 --type-add=ruby=.haml
 --type-add=ruby=.sass
+--type-add=ruby=.feature
