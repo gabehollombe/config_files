@@ -227,3 +227,19 @@ if (has("gui_running"))
 endif
 
 
+
+" Turn off the arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" use w!! to sudo :w  a file that we opened without su privs
+cmap w!! w !sudo tee % >/dev/null
