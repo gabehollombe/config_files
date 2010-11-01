@@ -57,7 +57,8 @@ hi def link sassIdChar                  Special
 hi def link sassClassChar               Special
 hi def link sassAmpersand               Character
 hi def link sassId                      Identifier
-hi def link sassClass                   Type
+hi def link sassClass                   Identifier
+" hi def link sassClass                   Type
 
 let b:current_syntax = "sass"
 
