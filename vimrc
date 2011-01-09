@@ -243,3 +243,7 @@ map <C-l> <C-w>l
 
 " use w!! to sudo :w  a file that we opened without su privs
 cmap w!! w !sudo tee % >/dev/null
+
+
+" add in matchit.vim built in plugin
+runtime macros/matchit.vim
