@@ -3,3 +3,4 @@
 --type-add=ruby=.sass
 --type-add=ruby=.feature
 --type-add=ruby=.coffee
+--type-add=ruby=.jst
