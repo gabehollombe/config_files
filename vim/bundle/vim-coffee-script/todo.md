@@ -6,14 +6,6 @@
       {a, b} = c
        └──┴─ these should be highlighted as identifiers
 
-- Assignments inside brackets (sounds simple enough):
-
-      a[b -= c] = d
-
-  this should still be highlighted correctly:
-
-      a[b[c]] = d
-
 - Smart, lookback outdenting for cases like:
 
       a = {
@@ -22,10 +14,13 @@
         }
       └─ bracket should be put here
 
-- Reserved words shouldn't be highlighted as errors in colon assignments:
+- Fix assignments with brackets in these cases:
 
-      function: 'function'
+      a[b] = c[d]
+      a[b -= c] = d
 
-- Soak operator in assignments:
+  and still highlight these correctly:
 
-      a?.b?.c = d
+      a[b] = c
+      a[b[c]] = d
+      a[b[c] -= d] = e
