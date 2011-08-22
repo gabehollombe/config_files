@@ -37,6 +37,8 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   set hlsearch
 endif
 
+
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -165,6 +167,10 @@ colorscheme vividchalk
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
+" set background=dark
+" colorscheme solarized
+
+
 " Numbers
 set number
 set numberwidth=5
@@ -226,13 +232,11 @@ if (has("gui_running"))
   set guioptions-=T
 endif
 
-
-
-" Turn off the arrow keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+" Turn off the arrow keys for learning cardinal hjkl directions.
+" map <up> <nop>
+" map <down> <nop>
+" map <left> <nop>
+" map <right> <nop>
 
 
 " Easy window navigation
