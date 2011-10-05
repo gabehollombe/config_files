@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/gabe/code/skillsbuilder'
+let g:netrw_dirhist_2='/Users/gabe/code/play500'
+let g:netrw_dirhist_3='/Users/gabe/code/eureka'
+let g:netrw_dirhist_4='/Users/gabe/code/avantbard.com/gabe'
+let g:netrw_dirhist_5='/Users/gabe/code/eureka'
+let g:netrw_dirhist_6='/Users/gabe/code/play500'
+let g:netrw_dirhist_7='/Users/gabe/code/eureka'

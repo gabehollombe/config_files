@@ -167,7 +167,6 @@ colorscheme vividchalk
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
-" let g:solarized_contrast="high"
 " set background=dark
 " colorscheme solarized
 
@@ -258,6 +257,3 @@ runtime macros/matchit.vim
 " :w !ruby | mvim -c "set nomodified" -
 
 let g:EasyMotion_leader_key = '_'
-
-" MacVIM shift+arrow-keys behavior (required in .vimrc)
-let macvim_hig_shift_movement = 1
