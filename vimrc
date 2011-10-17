@@ -259,5 +259,6 @@ runtime macros/matchit.vim
 
 let g:EasyMotion_leader_key = '_'
 
-" MacVIM shift+arrow-keys behavior (required in .vimrc)
-let macvim_hig_shift_movement = 1
+" Turn off K (defaults to search for word under cursor, but I always typo it
+" when I mean to type J to join lines.
+nmap K <nop>
