@@ -263,8 +263,6 @@ runtime macros/matchit.vim
 " How to run current ruby file as ruby script and show result in new window:
 " :w !ruby | mvim -c "set nomodified" -
 
-let g:EasyMotion_leader_key = '_'
-
 " Turn off K (defaults to search for word under cursor, but I always typo it
 " when I mean to type J to join lines.
 nmap K <nop>
