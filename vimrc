@@ -211,9 +211,15 @@ function! OpenRailsDoc(keyword)
 endfunction
 noremap RR :call OpenRailsDoc(expand('<cword>'))<CR>
 
-" FuzzyFinder keybinds
-map <leader>t :FufFile **/<CR>
-map <leader>b :FufBuffer<CR>
+" CtrlP bindings
+let g:ctrlp_map = '<Leader>t'
+map <Leader>b :CtrlPBuffer
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+
+" Ignore some dirs
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/* 
+
 
 " Make Control+V do a system clipboard paste in normal and insert modes
 " nmap <C-V> "+gP
