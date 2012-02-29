@@ -33,3 +33,5 @@ for name in *; do
     fi
   fi
 done
+
+git submodule update --init
