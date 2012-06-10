@@ -234,3 +234,7 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 nnoremap <silent> g# g#zz
+
+" vim-slime settings
+let g:slime_target = "tmux"
+

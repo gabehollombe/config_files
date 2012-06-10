@@ -4,3 +4,4 @@
 --type-add=ruby=.feature
 --type-add=ruby=.coffee
 --type-add=ruby=.jst
+--type-add=ruby=.ejs
