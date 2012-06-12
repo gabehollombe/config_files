@@ -226,6 +226,9 @@ runtime macros/matchit.vim
 " when I mean to type J to join lines.
   nmap K <nop>
 
+" I always fat-finger :W when I mean :w, so bind it
+cmap W w
+
 
 " Keep search result in center of screen.
 nnoremap <silent> n nzz
@@ -237,4 +240,5 @@ nnoremap <silent> g# g#zz
 
 " vim-slime settings
 let g:slime_target = "tmux"
+
 
