@@ -1,22 +1,112 @@
-" Load Pathogen bundles
-call pathogen#runtime_append_all_bundles()
+" Environment {
+  set nocompatible        " must be first line
 
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+  " Setup Bundle Support {
+  " The next three lines ensure that the ~/.vim/bundle/ system works
+    filetype on
+    filetype off
+    set rtp+=~/.vim/bundle/vundle
+    call vundle#rc()
+  " }
+" }
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" Bundles {
+    " Deps
+        Bundle 'gmarik/vundle'
+        Bundle 'MarcWeber/vim-addon-mw-utils'
+        Bundle 'tomtom/tlib_vim'
+        if executable('ack-grep')
+            let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+            Bundle 'mileszs/ack.vim'
+        elseif executable('ack')
+            Bundle 'mileszs/ack.vim'
+        endif
 
+    " General
+        Bundle 'scrooloose/nerdtree'
+        Bundle 'altercation/vim-colors-solarized'
+        Bundle 'spf13/vim-colors'
+        Bundle 'tpope/vim-surround'
+        " Bundle 'AutoClose'
+        Bundle 'kien/ctrlp.vim'
+        " Bundle 'vim-scripts/sessionman.vim'
+        Bundle 'matchit.zip'
+        Bundle 'Lokaltog/vim-powerline'
+        Bundle 'Lokaltog/vim-easymotion'
+
+        "Make gvim color schemes work in terminal
+        Bundle 'godlygeek/csapprox'
+
+        Bundle 'jistr/vim-nerdtree-tabs'
+        Bundle 'flazz/vim-colorschemes'
+        Bundle 'mbbill/undotree'
+        Bundle 'nathanaelkane/vim-indent-guides'
+        " Bundle 'vim-scripts/restore_view.vim'
+        " Bundle 'tpope/vim-abolish.git'
+
+    " General Programming
+        " Pick one of the checksyntax, jslint, or syntastic
+        Bundle 'scrooloose/syntastic'
+        Bundle 'tpope/vim-fugitive'
+        Bundle 'mattn/webapi-vim'
+        Bundle 'mattn/gist-vim'
+        Bundle 'scrooloose/nerdcommenter'
+
+        "For aligning ='s, :'s, etc
+        Bundle 'godlygeek/tabular'
+
+        if executable('ctags')
+            Bundle 'majutsushi/tagbar'
+        endif
+
+    " Snippets & AutoComplete
+        " Bundle 'Shougo/neocomplcache'
+        " Bundle 'Shougo/neosnippet'
+        " Bundle 'honza/snipmate-snippets'
+
+    " Python
+        " Pick either python-mode or pyflakes & pydoc
+        " Bundle 'klen/python-mode'
+        " Bundle 'python.vim'
+        " Bundle 'python_match.vim'
+        " Bundle 'pythoncomplete'
+
+    " Javascript
+        Bundle 'leshill/vim-json'
+        Bundle 'groenewege/vim-less'
+        Bundle 'pangloss/vim-javascript'
+        Bundle 'briancollins/vim-jst'
+        Bundle 'vim-coffee-script'
+        
+
+
+    " HTML
+        Bundle 'amirh/HTML-AutoCloseTag'
+        Bundle 'hail2u/vim-css3-syntax'
+
+    " Ruby
+        Bundle 'tpope/vim-rails'
+        let g:rubycomplete_buffer_loading = 1
+        "let g:rubycomplete_classes_in_global = 1
+        "let g:rubycomplete_rails = 1
+
+    " Misc
+        Bundle 'tpope/vim-markdown'
+        Bundle 'spf13/vim-preview'
+" }
+
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+
+" Store swap files in fixed location, not current directory.
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 set nobackup
 set nowritebackup
-set history=50		" keep 50 lines of command line history
+
+set history=500		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
-" Store swap files in fixed location, not current directory.
-set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 
 set cursorline " highlight current line
 set hidden " allow unsaved buffers
@@ -25,43 +115,20 @@ set hidden " allow unsaved buffers
 set smartindent
 set autoindent
 
-" Use Q to format lines to 'textwidth' length
-map Q gq
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-  set hlsearch
-endif
+filetype plugin indent on   " Automatically detect file types.
+syntax on                   " syntax highlighting
+set mouse=a                 " automatically enable mouse usage
+set mousehide               " hide the mouse cursor while typing
+scriptencoding utf-8
+set hlsearch
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
+set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
+set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
+set virtualedit=onemore         " allow for cursor beyond last character
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
-  augroup END
-else
-  set autoindent		" always set autoindenting on
-endif " has("autocmd")
+set background=dark         " Assume a dark background
 
 " Folding
 if has("folding")
@@ -149,15 +216,15 @@ set complete=.,t
 set ignorecase
 set smartcase
 
-" Set gui font
-set guifont=Anonymous\ Pro:h14
+set guifont=Source\ Code\ Pro\ ExtraLight:h14,Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
+set noantialias
 
-let g:browser = 'open'     
+let g:browser = 'open'
 " Open the Ruby ApiDock page for the word under cursor, in a new Browser tab
 function! OpenRubyDoc(keyword)
   let url = 'http://apidock.com/ruby/'.a:keyword
   exec '!'.g:browser.' '.url.''
-endfunction           
+endfunction
 noremap RB :call OpenRubyDoc(expand('<cword>'))<CR>
  
 " Open the Rails ApiDock page for the word under cursos, in a Browser tab
@@ -213,6 +280,14 @@ map <C-l> <C-w>l
 
 " use w!! to sudo :w  a file that we opened without su privs
 cmap w!! w !sudo tee % >/dev/null
+"
+" Adjust viewports to the same size
+map <Leader>= <C-w>=
+
+" map <Leader>ff to display all lines with keyword under cursor
+" and ask which one to jump to
+nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
 
 
 " add in matchit.vim built in plugin
@@ -229,6 +304,10 @@ runtime macros/matchit.vim
 " I always fat-finger :W when I mean :w, so bind it
 cmap W w
 
+" use | and - for splits faster
+nmap <bar> <C-w>v
+nmap - <C-w>s
+
 
 " Keep search result in center of screen.
 nnoremap <silent> n nzz
@@ -241,4 +320,160 @@ nnoremap <silent> g# g#zz
 " vim-slime settings
 let g:slime_target = "tmux"
 
+" Vim UI {
+    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+      let g:solarized_termcolors=256
+      let g:solarized_termtrans=1
+      let g:solarized_contrast="high"
+      let g:solarized_visibility="high"
+      color solarized                 " load a colorscheme
+    endif
+    set tabpagemax=15               " only show 15 tabs
+    set showmode                    " display the current mode
+
+    set cursorline                  " highlight current line
+
+    if has('cmdline_info')
+        set ruler                   " show the ruler
+        set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+        set showcmd                 " show partial commands in status line and
+                                    " selected characters/lines in visual mode
+    endif
+
+    if has('statusline')
+        set laststatus=2
+
+        " Broken down into easily includeable segments
+        set statusline=%<%f\    " Filename
+        set statusline+=%w%h%m%r " Options
+        set statusline+=%{fugitive#statusline()} "  Git Hotness
+        set statusline+=\ [%{&ff}/%Y]            " filetype
+        set statusline+=\ [%{getcwd()}]          " current dir
+        set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    endif
+
+    set backspace=indent,eol,start  " backspace over everything in insert mode
+    set linespace=0                 " No extra spaces between rows
+    set nu                          " Line numbers on
+    set showmatch                   " show matching brackets/parenthesis
+    set incsearch                   " find as you type search
+    set hlsearch                    " highlight search terms
+    set ignorecase                  " case insensitive search
+    set smartcase                   " case sensitive when uc present
+    set wildmenu                    " show list instead of just completing
+    set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
+    set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap too
+    set scrolljump=5                " lines to scroll when cursor leaves screen
+    set scrolloff=3                 " minimum lines to keep above and below cursor
+    set foldenable                  " auto fold code
+    set list
+    set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+" }
+
+""" Code folding options
+nmap <leader>f0 :set foldlevel=0<CR>
+nmap <leader>f1 :set foldlevel=1<CR>
+nmap <leader>f2 :set foldlevel=2<CR>
+nmap <leader>f3 :set foldlevel=3<CR>
+nmap <leader>f4 :set foldlevel=4<CR>
+nmap <leader>f5 :set foldlevel=5<CR>
+nmap <leader>f6 :set foldlevel=6<CR>
+nmap <leader>f7 :set foldlevel=7<CR>
+nmap <leader>f8 :set foldlevel=8<CR>
+nmap <leader>f9 :set foldlevel=9<CR>
+
+
+" Plugins {
+    " Ctags {
+        set tags=./tags;/,~/.vimtags
+    " }
+    " NerdTree {
+        map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+        map <leader>e :NERDTreeFind<CR>
+        nmap <leader>nt :NERDTreeFind<CR>
+
+        " let NERDTreeShowBookmarks=1
+        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+        let NERDTreeChDirMode=0
+        let NERDTreeQuitOnOpen=1
+        let NERDTreeMouseMode=2
+        let NERDTreeShowHidden=1
+        let NERDTreeKeepTreeInNewTab=1
+        let g:nerdtree_tabs_open_on_gui_startup=0
+    " }
+
+    " Tabularize {
+        nmap <Leader>a= :Tabularize /=<CR>
+        vmap <Leader>a= :Tabularize /=<CR>
+        nmap <Leader>a: :Tabularize /:<CR>
+        vmap <Leader>a: :Tabularize /:<CR>
+        nmap <Leader>a:: :Tabularize /:\zs<CR>
+        vmap <Leader>a:: :Tabularize /:\zs<CR>
+        nmap <Leader>a, :Tabularize /,<CR>
+        vmap <Leader>a, :Tabularize /,<CR>
+        nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+        vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+     " }
+
+     " Buffer explorer {
+      " nmap <leader>b :BufExplorer<CR>
+     " }
+
+     " JSON {
+        nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+     " }
+
+     " ctrlp {
+        " nnoremap <silent> <D-t> :CtrlP<CR>
+        " nnoremap <silent> <D-r> :CtrlPMRU<CR>
+        let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+            \ 'file': '\.exe$\|\.so$\|\.dll$' }
+        let g:ctrlp_match_window_bottom = 0 "Put the match window on top
+        let g:ctrlp_match_window_reversed = 0 "Put best match on top of match window
+        let g:ctrlp_switch_buffer = 0 " Don't jump to existing buffer/tab instances of file matches
+        let g:ctrlp_jump_to_buffer = 0 " Don't jump to existing buffer/tab instances of file matches
+        let g:ctrlp_working_path_mode = 'ra'
+        let g:ctrlp_map = '<Leader>t'
+        map <Leader>b :CtrlPBuffer<CR>
+     "}
+
+     " TagBar {
+        nnoremap <silent> <leader>tt :TagbarToggle<CR>
+     "}
+
+     " PythonMode {
+     " Disable if python support not present
+        if !has('python')
+           let g:pymode = 1
+        endif
+     " }
+
+     " Fugitive {
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gd :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>
+     "}
+     " UndoTree {
+        nnoremap <Leader>u :UndotreeToggle<CR>
+        let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one wants to interact with it.
+     " }
+
+     " indent_guides {
+        if !exists('g:spf13_no_indent_guides_autocolor')
+            let g:indent_guides_auto_colors = 1
+        else
+            " for some colorscheme ,autocolor will not work,like 'desert','ir_black'.
+            autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121   ctermbg=3
+            autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
+        endif
+        set ts=2 sw=2 et
+        let g:indent_guides_start_level = 2
+        let g:indent_guides_guide_size = 1
+        let g:indent_guides_enable_on_vim_startup = 0
+     " }
+" }
 
