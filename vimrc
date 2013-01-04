@@ -115,6 +115,9 @@ set hidden " allow unsaved buffers
 set smartindent
 set autoindent
 
+" Auto change working directory to current file
+autocmd BufEnter * silent! lcd %:p:h
+
 
 filetype plugin indent on   " Automatically detect file types.
 syntax on                   " syntax highlighting
@@ -184,8 +187,6 @@ au! BufRead,BufNewFile *.haml         setfiletype haml
 " No Help, please
 nmap <F1> <Esc>
 
-" Display extra whitespace
-set list listchars=tab:»·,trail:·
 
 " Local config
 if filereadable(".vimrc.local")
@@ -216,7 +217,7 @@ set complete=.,t
 set ignorecase
 set smartcase
 
-set guifont=Source\ Code\ Pro\ ExtraLight:h14,Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
+set guifont=Source\ Code\ Pro\ Light:h14,Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
 set noantialias
 
 let g:browser = 'open'
@@ -287,6 +288,10 @@ map <Leader>= <C-w>=
 " map <Leader>ff to display all lines with keyword under cursor
 " and ask which one to jump to
 nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
+" Make Leader+8 (think * but with leader instead of shift) Ack for word
+" under cursor
+nmap <Leader>8 :Ack! <cword><cr>
 
 
 
@@ -394,12 +399,12 @@ nmap <leader>f9 :set foldlevel=9<CR>
 
         " let NERDTreeShowBookmarks=1
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-        let NERDTreeChDirMode=0
+        " let NERDTreeChDirMode=0
         let NERDTreeQuitOnOpen=1
         let NERDTreeMouseMode=2
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
-        let g:nerdtree_tabs_open_on_gui_startup=0
+        " let g:nerdtree_tabs_open_on_gui_startup=0
     " }
 
     " Tabularize {
