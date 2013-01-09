@@ -24,6 +24,7 @@
 
     " General
         Bundle 'scrooloose/nerdtree'
+        " Bundle 'jistr/vim-nerdtree-tabs'
         Bundle 'altercation/vim-colors-solarized'
         Bundle 'spf13/vim-colors'
         Bundle 'tpope/vim-surround'
@@ -36,9 +37,8 @@
 
         "Make gvim color schemes work in terminal
         Bundle 'godlygeek/csapprox'
-
-        Bundle 'jistr/vim-nerdtree-tabs'
         Bundle 'flazz/vim-colorschemes'
+
         Bundle 'mbbill/undotree'
         Bundle 'nathanaelkane/vim-indent-guides'
         " Bundle 'vim-scripts/restore_view.vim'
@@ -47,9 +47,8 @@
     " General Programming
         " Pick one of the checksyntax, jslint, or syntastic
         Bundle 'scrooloose/syntastic'
+
         Bundle 'tpope/vim-fugitive'
-        Bundle 'mattn/webapi-vim'
-        Bundle 'mattn/gist-vim'
         Bundle 'scrooloose/nerdcommenter'
 
         "For aligning ='s, :'s, etc
@@ -372,7 +371,9 @@ let g:slime_target = "tmux"
     set scrolloff=3                 " minimum lines to keep above and below cursor
     set foldenable                  " auto fold code
     set list
-    set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+    " set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+    set listchars=tab:»·,trail:·,extends:#,nbsp:. " Highlight problematic whitespace
+    " set list listchars=tab:»·,trail:·
 " }
 
 """ Code folding options
@@ -393,17 +394,17 @@ nmap <leader>f9 :set foldlevel=9<CR>
         set tags=./tags;/,~/.vimtags
     " }
     " NerdTree {
-        map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-        map <leader>e :NERDTreeFind<CR>
-        nmap <leader>nt :NERDTreeFind<CR>
+       "  map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+       "  map <leader>e :NERDTreeFind<CR>
+       "  nmap <leader>nt :NERDTreeFind<CR>
 
-        " let NERDTreeShowBookmarks=1
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-        " let NERDTreeChDirMode=0
-        let NERDTreeQuitOnOpen=1
-        let NERDTreeMouseMode=2
-        let NERDTreeShowHidden=1
-        let NERDTreeKeepTreeInNewTab=1
+       "  " let NERDTreeShowBookmarks=1
+       "  let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+       "  " let NERDTreeChDirMode=0
+       "  let NERDTreeQuitOnOpen=1
+       "  let NERDTreeMouseMode=2
+       "  let NERDTreeShowHidden=1
+       "  let NERDTreeKeepTreeInNewTab=1
         " let g:nerdtree_tabs_open_on_gui_startup=0
     " }
 
