@@ -92,6 +92,7 @@
     " Misc
         Bundle 'tpope/vim-markdown'
         Bundle 'spf13/vim-preview'
+        Bundle 'elixir-lang/vim-elixir'
 " }
 
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
@@ -445,7 +446,7 @@ nmap <leader>f9 :set foldlevel=9<CR>
      "}
 
      " TagBar {
-        nnoremap <silent> <leader>tt :TagbarToggle<CR>
+        nnoremap <silent> <leader>TT :TagbarToggle<CR>
      "}
 
      " PythonMode {
